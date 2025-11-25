@@ -1,0 +1,23 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --roxo-escuro: #4b2e83;
+  --roxo-medio: #6b4fb5;
+  --roxo-claro: #e9ddff;
+  --texto-escuro: #1a1a1a;
+  --texto-claro: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--roxo-claro);
+  color: var(--texto-escuro);
+  display: flex;
+  flex-direction: column;
+  min-width: 100vh;
+}
