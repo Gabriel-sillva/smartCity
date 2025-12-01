@@ -27,7 +27,7 @@ class SensorSerializer(serializers.ModelSerializer):
                   'ambiente_id']
         
 class HistoricoSerializer(serializers.ModelSerializer):
-    sensor = SensorSerializer(read_only=True)
+    sensor = SensorSerializer(read_only=True) 
     sensor_id = serializers.PrimaryKeyRelatedField(
         queryset=Sensor.objects.all(), 
         source='sensor', write_only=True

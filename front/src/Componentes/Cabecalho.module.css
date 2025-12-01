@@ -1,5 +1,5 @@
 .cabecalho{
-    background: var(--roxo-escuro);
+    background: var(--preto);
     width: 100vw;
     height: 150px;
     display: flex;
@@ -10,7 +10,7 @@
 }
 
 .titilo{
-    color: var(--texto-calro);
+    color: var(--texto-claro);
 
 }
 

@@ -9,7 +9,7 @@
 }
 
 .menuItem {
-    background: var(--roxo-medio);
+    background: var(--vermelho-apagado);
     color: var(--texto-claro);
     padding: 50px;
     text-align: center;
@@ -27,7 +27,7 @@
 
 .menuItem:hover,
 .menuItem:focus {
-    background: var(--roxo-escuro);
+    background: var(--amarelo-apagado);
     outline: 3px solid #ffffff;
     transform: scale(1.04);
 }

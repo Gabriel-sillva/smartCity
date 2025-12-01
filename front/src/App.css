@@ -5,10 +5,11 @@
 }
 
 :root {
-  --roxo-escuro: #4b2e83;
-  --roxo-medio: #6b4fb5;
-  --roxo-claro: #e9ddff;
-  --texto-escuro: #1a1a1a;
+  --preto: #000000;
+  --azul-apagado: #5d8ea8;
+  --vermelho-apagado: #d12748;
+  --amarelo-apagado: #efac24;
+  --texto-escuro: #000000;
   --texto-claro: #ffffff;
 }
 
