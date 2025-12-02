@@ -6,6 +6,7 @@
 
 :root {
   --preto: #000000;
+  --azul-escuro: #11243b;
   --azul-apagado: #5d8ea8;
   --vermelho-apagado: #d12748;
   --amarelo-apagado: #efac24;
@@ -16,8 +17,8 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: var(--roxo-claro);
-  color: var(--texto-escuro);
+  background: var(--azul-escuro);
+  color: var(--texto-claro);
   display: flex;
   flex-direction: column;
   min-width: 100vh;

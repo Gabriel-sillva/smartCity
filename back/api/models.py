@@ -56,7 +56,7 @@ class Sensor(models.Model):
     latitude = models.FloatField()
     longitude = models.FloatField()
     status = models.CharField(max_length=10, choices=STATUS_SENSOR, default='ATIVO')
-    ambiente = models.ForeignKey(Ambiente, on_delete=models.CASCADE)
+    ambiente = models.ForeignKey(Ambiente, related_name='do_sensor', on_delete=models.CASCADE)
     timestamp = models.DateField(auto_now_add=True)
 
     def __str__(self):
