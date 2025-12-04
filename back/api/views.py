@@ -127,12 +127,18 @@ class LocalViewSet(viewsets.ModelViewSet):
     serializer_class = LocalSerializer
     permission_classes = [IsAuthenticated]
 
-    @action(detail=True, methods='get')
-    def medicoes(self, request, pk=None):
-        historico = Historico.objects.filter(Sensor_id=pk)
-        serializer = HistoricoSerializer(historico, many=True)
-
+    @action(detail=True, methods=['get'])
+    def sensores(self, request, pk=None):
+        sensores = Sensor.objects.filter(ambiente__local_id=pk)
+        serializer = SensorSerializer(sensores, many=True)
         return Response(serializer.data)
+
+    @action(detail=True, methods=['get'])
+    def medicoes(self, request, pk=None):
+        historico = Historico.objects.filter(sensor__ambiente__local_id=pk)
+        serializer = HistoricoSerializer(historico, many=True)
+        return Response(serializer.data)
+
 
 # =====================================================================
 # ResponsavelViewSet

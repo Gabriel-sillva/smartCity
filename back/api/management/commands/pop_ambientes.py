@@ -19,16 +19,18 @@ class Command(BaseCommand):
         with open(file_path, newline='', encoding='utf-8') as csvfile:
             reader = csv.reader(csvfile)
 
+            next(reader)  # Pula cabeçalho: local,descricao,responsavel
+
             for row in reader:
-                descricao = row[0].strip()
-                local_id = int(row[1].strip())
+                local_id = int(row[0].strip())
+                descricao = row[1].strip()
                 responsavel_id = int(row[2].strip())
 
                 try:
                     local = Local.objects.get(id=local_id)
                     responsavel = Responsavel.objects.get(id=responsavel_id)
-                except:
-                    self.stdout.write(self.style.ERROR(f"IDs inválidos: L={local_id} R={responsavel_id}"))
+                except Exception as e:
+                    self.stdout.write(self.style.ERROR(f"Erro ao carregar IDs: {e}"))
                     continue
 
                 obj, created = Ambiente.objects.get_or_create(
@@ -40,6 +42,6 @@ class Command(BaseCommand):
                 if created:
                     self.stdout.write(self.style.SUCCESS(f"Ambiente criado: {descricao}"))
                 else:
-                    self.stdout.write(f"Já existia: {descricao}")
+                    self.stdout.write(f"Ambiente já existia: {descricao}")
 
         self.stdout.write(self.style.SUCCESS("Importação de ambientes concluída!"))
