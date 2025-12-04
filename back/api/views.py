@@ -6,8 +6,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 from django.utils import timezone
 from datetime import timedelta
 
-from .models import Ambiente, Sensor, Historico
-from .serializers import AmbienteSerializer, SensorSerializer, HistoricoSerializer
+from .models import Ambiente, Sensor, Historico,Local,Responsavel
+from .serializers import AmbienteSerializer, SensorSerializer, HistoricoSerializer, LocalSerializer,ResponsavelSerializer
 
 
 # =====================================================================
@@ -104,3 +104,42 @@ class HistoricoViewSet(viewsets.ModelViewSet):
         historico = Historico.objects.filter(timestamp__gte=limite)
         serializer = self.get_serializer(historico, many=True)
         return Response(serializer.data)
+    
+    
+    def create(self, request, *args, **kwargs): # Bloquear medições se sensor estiver INATIVO
+        sensor_id = request.data.get("sensor_id")
+        sensor = Sensor.objects.get(id=sensor_id)
+
+        if sensor.status == "INATIVO":
+            return Response(
+                {"erro": "Sensor inativo. Medição não permitida"},
+                status=400
+            )
+
+
+        return super().create(request, *args, **kwargs)
+    
+# =====================================================================
+# LocalViewSet
+# =====================================================================
+class LocalViewSet(viewsets.ModelViewSet):
+    queryset = Local.objects.all()
+    serializer_class = LocalSerializer
+    permission_classes = [IsAuthenticated]
+
+    @action(detail=True, methods='get')
+    def medicoes(self, request, pk=None):
+        historico = Historico.objects.filter(Sensor_id=pk)
+        serializer = HistoricoSerializer(historico, many=True)
+
+        return Response(serializer.data)
+
+# =====================================================================
+# ResponsavelViewSet
+# =====================================================================
+class ResponsavelViewSet(viewsets.ModelViewSet):
+    queryset = Responsavel.objects.all()
+    serializer_class = ResponsavelSerializer
+    permission_classes = [IsAuthenticated]
+
+  
