@@ -1,25 +1,12 @@
-// src/Componentes/Cabecalho.jsx
-import { useNavigate } from "react-router-dom";
-import { logout } from "../services/auth";
-import styles from "./Cabecalho.module.css";
+import estilo from './Cabecalho.module.css';
+import logo from '../assets/logo.png';
 
-export default function Cabecalho() {
-  const navigate = useNavigate();
+export function Cabecalho(){
+    return(
+        <header className={estilo.cabecalho}>
+            <img src={logo} alt="Logo Smartcity" className={estilo.logo}/>
+            <h1 className={estilo.titulo}>SmartCity</h1>
+        </header>
+    )
 
-  function handleLogout() {
-    logout();
-    navigate("/login");
-  }
-
-  return (
-    <header className={styles.header}>
-      <div className={styles.brand} onClick={() => navigate("/")}>SmartCity</div>
-      <div>
-        <button className={styles.btn} onClick={() => navigate("/historicos")}>Histórico</button>
-        <button className={styles.btn} onClick={() => navigate("/ambientes")}>Ambientes</button>
-        <button className={styles.btn} onClick={() => navigate("/sensores")}>Sensores</button>
-        <button className={styles.btnDanger} onClick={handleLogout}>Logout</button>
-      </div>
-    </header>
-  );
 }

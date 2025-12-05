@@ -106,19 +106,36 @@ class HistoricoViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
     
     
-    def create(self, request, *args, **kwargs): # Bloquear medições se sensor estiver INATIVO
+    def create(self, request, *args, **kwargs):
+        # Pega o ID do sensor enviado
         sensor_id = request.data.get("sensor_id")
-        sensor = Sensor.objects.get(id=sensor_id)
 
+        # Verifica se o sensor existe
+        try:
+            sensor = Sensor.objects.get(id=sensor_id)
+        except Sensor.DoesNotExist:
+            return Response(
+                {"erro": "Sensor não encontrado"},
+                status=404
+            )
+
+        # Bloqueia criação se sensor estiver inativo
         if sensor.status == "INATIVO":
             return Response(
                 {"erro": "Sensor inativo. Medição não permitida"},
                 status=400
             )
 
+        # Valida o serializer
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
 
-        return super().create(request, *args, **kwargs)
-    
+        # Cria o objeto
+        self.perform_create(serializer)
+
+        return Response(serializer.data, status=201)
+
+
 # =====================================================================
 # LocalViewSet
 # =====================================================================

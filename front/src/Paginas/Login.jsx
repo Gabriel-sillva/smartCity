@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useState } from "react";
 
 const schemaLogin = z.object({
     username: z.string()
@@ -19,54 +18,46 @@ const schemaLogin = z.object({
 
 export function Login() {
     const navigate = useNavigate();
-    const [erroApi, setErroApi] = useState("");
 
     const {
-        register,
-        handleSubmit,
-        formState: { errors },
+        register, //registra p mim
+        handleSubmit, //no momento do submit (clicar no botao)
+        formState: { errors },//do formulario, se der ruim grava na variavel errors
     } = useForm({
         resolver: zodResolver(schemaLogin),
     });
 
     async function enviarDados(data) {
-        setErroApi("");
+        console.log(data.username);
+        console.log(data.password)
+        try{
+                const response = await axios.post('http://localhost:8000/api/token/', {
+                    username: data.username,
+                    password: data.password
+                });
 
-        try {
-            const resposta = await fetch("http://localhost:8000/api/token/", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data),
-            });
+                const { access, refresh } = response.data;
+                
+                localStorage.setItem('access_token', access);
+                localStorage.setItem('refresh_token', refresh);
+                console.log('login Bem-Sucedido!');
 
-            const resultado = await resposta.json();
+                navigate('/inicial');
 
-            // Erro de autenticação
-            if (!resposta.ok) {
-                setErroApi("Usuário ou senha incorretos");
-                return;
-            }
 
-            // Salvando tokens
-            localStorage.setItem("access", resultado.access);
-            localStorage.setItem("refresh", resultado.refresh);
-
-            // Login OK -> vai para página inicial
-            navigate("/");
-
-        } catch (erro) {
-            setErroApi("Erro ao conectar com o servidor");
-            console.error("Erro:", erro);
+        } catch (error) {
+            console.error('Erro de autenticação', error);
+            alert("Dados Inválidos, por favor verificar suas credenciais");
         }
     }
 
     return (
         <section className={estilo.container}>
             <form className={estilo.formulario} onSubmit={handleSubmit(enviarDados)}>
+
                 <h2 className={estilo.titulo}>Acesso ao Sistema</h2>
 
-                {erroApi && <p className={estilo.erroApi}>{erroApi}</p>}
-
+         
                 <label htmlFor="usuario">Usuário:</label>
                 <input
                     id="usuario"
@@ -78,6 +69,7 @@ export function Login() {
                     <p className={estilo.erro}>{errors.username.message}</p>
                 )}
 
+              
                 <label htmlFor="senha">Senha:</label>
                 <input
                     id="senha"
@@ -90,6 +82,7 @@ export function Login() {
                 )}
 
                 <button className={estilo.botao}>Entrar</button>
+
             </form>
         </section>
     );
