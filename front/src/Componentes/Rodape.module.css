@@ -1,15 +1,8 @@
-.rodape{
-    background: var(--preto);
-    color: var(--texto-claro);
-    padding: 12px 20px;
-    text-align: center;
-    font-size: 0.95rem;
-
+.rodape {
+  background: var(--roxo-escuro);
+  color: var(--texto-claro);
+  padding: 12px 20px;
+  text-align: center;
+  font-size: 0.95rem;
 }
 
-
-.rodape_logo{
-    height: 300px;
-    width: 1000px;
-    
-}

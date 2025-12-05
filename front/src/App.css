@@ -5,21 +5,24 @@
 }
 
 :root {
-  --preto: #000000;
-  --azul-escuro: #11243b;
-  --azul-apagado: #5d8ea8;
-  --vermelho-apagado: #d12748;
-  --amarelo-apagado: #efac24;
-  --texto-escuro: #000000;
-  --texto-claro: #ffffff;
+  --roxo-escuro: #2d1046;     
+  --roxo-medio:  #6b4fb5;   
+  --roxo-claro: #e9ddff;     
+  --texto-claro: #ffffff;     
+  --texto-escuro: #1a1a1a;    
 }
 
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: var(--azul-escuro);
-  color: var(--texto-claro);
+  background: var(--roxo-claro);
+  color: var(--texto-escuro);
   display: flex;
   flex-direction: column;
-  min-width: 100vh;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
