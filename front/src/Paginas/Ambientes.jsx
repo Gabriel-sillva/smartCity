@@ -58,7 +58,7 @@ export function Ambientes() {
                 <tbody>
                     {ambientes.map((ambiente) => (
                         <tr key={ambiente.id}>
-                            <td>{ambiente.sig}</td>
+                            <td>{ambiente.id}</td>
                             <td>{ambiente.descricao}</td>
                             <td>{ambiente.responsavel?.nome}</td>
                         </tr>

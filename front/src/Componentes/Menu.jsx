@@ -7,7 +7,7 @@ export function Menu() {
       <Link to='/' className={estilo.menuItem}>Home</Link>
       <Link to='/inicial/ambientes' className={estilo.menuItem}>Ambientes</Link>
       <Link to='/inicial/sensores' className={estilo.menuItem}>Sensores</Link>
-      <a href='#' className={estilo.menuItem}>Historico</a>  
+      <Link to='/inicial/historicos' className={estilo.menuItem}>Historico</Link>
     </nav>
   );
 }

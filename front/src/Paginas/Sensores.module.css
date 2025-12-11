@@ -1,0 +1,23 @@
+.table-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.table-ambientes {
+    width: 80%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.table-ambientes th,
+.table-ambientes td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.table-ambientes th {
+    background-color: #f1f1f1;
+}

@@ -6,6 +6,7 @@ export function Cabecalho(){
         <header className={estilo.cabecalho}>
             <img src={logo} alt="Logo Smartcity" className={estilo.logo}/>
             <h1 className={estilo.titulo}>SmartCity</h1>
+            
         </header>
     )
 

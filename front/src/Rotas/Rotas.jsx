@@ -3,7 +3,8 @@ import { Menu } from '../Componentes/Menu';
 import { Inicial } from "../Paginas/Inicial";
 import { Login } from "../Paginas/Login";
 import { Ambientes } from "../Paginas/Ambientes";
-
+import { Sensores } from "../Paginas/Sensores";
+import { Historicos } from "../Paginas/Historicos";
 export function Rotas() {
     return (
         <Routes>
@@ -19,7 +20,8 @@ export function Rotas() {
 
                 {/* Páginas internas */}
                 <Route path="ambientes" element={<Ambientes />} />
-                <Route path="sensores" element={<h2>Sensores</h2>} />
+                <Route path="sensores" element={<Sensores />} />
+                <Route path="historicos" element={<Historicos />} />
 
             </Route>
         </Routes>
