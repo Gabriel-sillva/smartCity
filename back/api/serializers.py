@@ -81,28 +81,17 @@ class SensorSerializer(serializers.ModelSerializer):
 # Serializador de Histórico
 # =====================================================================
 class HistoricoSerializer(serializers.ModelSerializer):
-    sensor = SensorSerializer(read_only=True)
-    sensor_id = serializers.PrimaryKeyRelatedField(
-        queryset=Sensor.objects.all(),
-        source="sensor",
-        write_only=True
-    )
-
-    ambiente = AmbienteSerializer(read_only=True)
-    ambiente_id = serializers.PrimaryKeyRelatedField(
-        queryset=Ambiente.objects.all(),
-        source="ambiente",
-        write_only=True
-    )
+    sensor_tipo = serializers.CharField(source="sensor.tipo", read_only=True)
+    sensor_mac = serializers.CharField(source="sensor.mac_address", read_only=True)
+    ambiente_descricao = serializers.CharField(source="ambiente.descricao", read_only=True)
 
     class Meta:
         model = Historico
         fields = [
             'id',
-            'sensor',
-            'sensor_id',
-            'ambiente',
-            'ambiente_id',
+            'sensor_tipo',
+            'sensor_mac',
+            'ambiente_descricao',
             'valor',
             'timestamp'
         ]
