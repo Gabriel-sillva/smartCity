@@ -1,9 +1,6 @@
+/* Inicial.module.css */
 .corpo {
   flex: 1;
-  display: flex;
-  justify-content: center;  
-  align-items: center;   
-  height: 78.5vh;   
+  padding: 20px;
+  display: block; /* deixa o conteúdo fluir naturalmente */
 }
-
-

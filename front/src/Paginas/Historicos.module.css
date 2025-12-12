@@ -8,16 +8,39 @@
 .table-ambientes {
     width: 80%;
     border-collapse: collapse;
-    background: white;
+    background: var(--cinza-claro); /* fundo urbano */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* sombra moderna */
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-.table-ambientes th,
-.table-ambientes td {
-    padding: 10px;
-    border: 1px solid #ccc;
-    text-align: left;
-}
-
+/* Cabeçalho */
 .table-ambientes th {
-    background-color: #f1f1f1;
+    background-color: var(--azul-escuro); /* tecnologia */
+    color: var(--texto-claro);
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+/* Linhas */
+.table-ambientes td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    font-size: 15px;
+    color: var(--texto-escuro);
+}
+
+/* Alternância de linhas */
+.table-ambientes tr:nth-child(even) {
+    background-color: var(--azul-claro); /* conectividade */
+}
+
+/* Hover interativo */
+.table-ambientes tr:hover {
+    color: var(--texto-claro);
+
 }
