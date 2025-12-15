@@ -8,8 +8,8 @@
 .table-ambientes {
     width: 80%;
     border-collapse: collapse;
-    background: var(--cinza-claro); /* fundo neutro urbano */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* leve sombra para modernidade */
+    background: var(--cinza-claro); /* fundo urbano */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* sombra moderna */
     border-radius: 8px;
     overflow: hidden;
 }
@@ -36,9 +36,11 @@
 
 /* Alternância de linhas */
 .table-ambientes tr:nth-child(even) {
-    background-color: var(--azul-claro); /* leve destaque */
+    background-color: var(--azul-claro); /* conectividade */
 }
 
+/* Hover interativo */
 .table-ambientes tr:hover {
     color: var(--texto-claro);
+
 }

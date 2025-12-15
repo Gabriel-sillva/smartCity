@@ -6,12 +6,13 @@
 }
 
 .table-ambientes {
-    width: 80%;
+    width: 85%;
     border-collapse: collapse;
-    background: var(--cinza-claro); /* fundo neutro urbano */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* leve sombra para modernidade */
+    background: var(--cinza-claro); /* fundo urbano */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* sombra moderna */
     border-radius: 8px;
     overflow: hidden;
+    font-family: Arial, sans-serif;
 }
 
 /* Cabeçalho */
@@ -29,16 +30,13 @@
 .table-ambientes td {
     padding: 12px;
     border-bottom: 1px solid #ddd;
-    text-align: left;
     font-size: 15px;
     color: var(--texto-escuro);
 }
 
 /* Alternância de linhas */
 .table-ambientes tr:nth-child(even) {
-    background-color: var(--azul-claro); /* leve destaque */
-}
-
-.table-ambientes tr:hover {
+    background-color: var(--azul-claro); /* conectividade */
     color: var(--texto-claro);
+ 
 }
